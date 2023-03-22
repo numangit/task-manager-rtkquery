@@ -1,37 +1,27 @@
 import React from 'react';
+import { useGetProjectsQuery } from '../../features/project/projectApi';
 
 const ProjectList = () => {
+
+    const { data: projects, isLoading, isError, error } = useGetProjectsQuery();
+
+    let content = null;
+
+    if (isLoading) content = <div className="text-center">Loading...</div>;
+    if (!isLoading && isError) content = <div className="text-center"> {error?.message}</div>;
+    if (!isLoading && !isError && projects?.length === 0) content = <div className="text-center">No Projects found!</div>;
+    if (!isLoading && !isError && projects?.length > 0) {
+        content = projects.map(project => <div className="checkbox-container">
+            <input type="checkbox" className={project.colorClass} checked />
+            <p className="label">{project.projectName}</p>
+        </div>)
+    }
+
     return (
         <div>
             <h3 className="text-xl font-bold">Projects</h3>
             <div className="mt-3 space-y-4">
-                <div className="checkbox-container">
-                    <input type="checkbox" className="color-scoreboard" checked />
-                    <p className="label">Scoreboard</p>
-                </div>
-
-                <div className="checkbox-container">
-                    <input type="checkbox" className="color-flight" checked />
-                    <p className="label">Flight Booking</p>
-                </div>
-
-                <div className="checkbox-container">
-                    <input type="checkbox" className="color-productCart" checked />
-                    <p className="label">Product Cart</p>
-                </div>
-
-                <div className="checkbox-container">
-                    <input type="checkbox" className="color-bookstore" checked />
-                    <p className="label">Book Store</p>
-                </div>
-                <div className="checkbox-container">
-                    <input type="checkbox" className="color-blog" checked />
-                    <p className="label">Blog Application</p>
-                </div>
-                <div className="checkbox-container">
-                    <input type="checkbox" className="color-jobFinder" checked />
-                    <p className="label">Job Finder</p>
-                </div>
+                {content}
             </div>
         </div>
     );
