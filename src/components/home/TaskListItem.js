@@ -1,17 +1,16 @@
 import React from 'react';
 
 const TaskListItem = ({ task }) => {
-    console.log(task);
 
     const { deadline, project, status, taskName, teamMember } = task;
     const date = deadline.split('-');
-    const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     return (
         <div className="lws-task">
             <div className="flex items-center gap-2 text-slate">
                 <h2 className="lws-date">{date[2]}</h2>
-                <h4 className="lws-month">{month[Number(date[1]) - 1]}</h4>
+                <h4 className="lws-month">{months[Number(date[1]) - 1]}</h4>
             </div>
 
             <div className="lws-taskContainer">
