@@ -17,7 +17,7 @@ const EditTaskForm = () => {
             <div className="fieldContainer">
                 <label>Assign To</label>
                 <select name="teamMember" id="lws-teamMember" required>
-                    <option value="" hidden selected>Select Job</option>
+                    <option value="" hidden defaultValue>Select Job</option>
                     <option>Sumit Saha</option>
                     <option>Sadh Hasan</option>
                     <option>Akash Ahmed</option>
@@ -30,7 +30,7 @@ const EditTaskForm = () => {
             <div className="fieldContainer">
                 <label htmlFor="lws-projectName">Project Name</label>
                 <select id="lws-projectName" name="projectName" required>
-                    <option value="" hidden selected>Select Project</option>
+                    <option value="" hidden defaultValue>Select Project</option>
                     <option>Scoreboard</option>
                     <option>Flight Booking</option>
                     <option>Product Cart</option>

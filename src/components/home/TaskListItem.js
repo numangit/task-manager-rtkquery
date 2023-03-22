@@ -53,9 +53,9 @@ const TaskListItem = ({ task }) => {
                 }
 
                 <select className="lws-status">
-                    <option value="pending" selected={status === "pending" ? true : false}>Pending</option>
-                    <option value="inProgress" selected={status === "inProgress" ? true : false}>In Progress</option>
-                    <option value="complete" selected={status === "completed" ? true : false}>Completed</option>
+                    <option value="pending" selected={status === "pending" && true}>Pending</option>
+                    <option value="inProgress" selected={status === "inProgress" && true}>In Progress</option>
+                    <option value="complete" selected={status === "completed" && true}>Completed</option>
                 </select>
             </div>
         </div>

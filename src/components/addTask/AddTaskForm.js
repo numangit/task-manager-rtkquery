@@ -42,7 +42,7 @@ const AddTaskForm = () => {
                     required
                     value={member}
                     onChange={(e) => setMember(e.target.value)}>
-                    <option value="" hidden selected>Select Job</option>
+                    <option value="" hidden defaultValue>Select Job</option>
                     {
                         teamMember?.map(member => <option
                             key={member.id}
@@ -61,7 +61,7 @@ const AddTaskForm = () => {
                     value={project}
                     onChange={(e) => setProject(e.target.value)}
                 >
-                    <option value="" hidden selected>Select Project</option>
+                    <option value="" hidden defaultValue>Select Project</option>
                     {
                         projects?.map(project => <option
                             key={project.id}
