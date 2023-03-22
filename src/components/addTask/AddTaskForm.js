@@ -1,10 +1,16 @@
 import React from 'react';
+import { useGetProjectsQuery } from '../../features/project/projectApi';
+import { useGetTeamMemberQuery } from '../../features/teamMember/teamMemberApi';
 
 const AddTaskForm = () => {
+
+    const { data: teamMember } = useGetTeamMemberQuery();
+    const { data: projects } = useGetProjectsQuery();
+
     return (
         <form className="space-y-6">
             <div className="fieldContainer">
-                <label for="lws-taskName">Task Name</label>
+                <label htmlFor="lws-taskName">Task Name</label>
                 <input
                     type="text"
                     name="taskName"
@@ -18,30 +24,31 @@ const AddTaskForm = () => {
                 <label>Assign To</label>
                 <select name="teamMember" id="lws-teamMember" required>
                     <option value="" hidden selected>Select Job</option>
-                    <option>Sumit Saha</option>
-                    <option>Sadh Hasan</option>
-                    <option>Akash Ahmed</option>
-                    <option>Md Salahuddin</option>
-                    <option>Riyadh Hassan</option>
-                    <option>Ferdous Hassan</option>
-                    <option>Arif Almas</option>
+                    {
+                        teamMember?.map(member => <option
+                            key={member.id}
+                            value={member.name}>
+                            {member.name}
+                        </option>)
+                    }
                 </select>
             </div>
             <div className="fieldContainer">
-                <label for="lws-projectName">Project Name</label>
+                <label htmlFor="lws-projectName">Project Name</label>
                 <select id="lws-projectName" name="projectName" required>
                     <option value="" hidden selected>Select Project</option>
-                    <option>Scoreboard</option>
-                    <option>Flight Booking</option>
-                    <option>Product Cart</option>
-                    <option>Book Store</option>
-                    <option>Blog Application</option>
-                    <option>Job Finder</option>
+                    {
+                        projects?.map(project => <option
+                            key={project.id}
+                            value={project.projectName}>
+                            {project.projectName}
+                        </option>)
+                    }
                 </select>
             </div>
 
             <div className="fieldContainer">
-                <label for="lws-deadline">Deadline</label>
+                <label htmlFor="lws-deadline">Deadline</label>
                 <input type="date" name="deadline" id="lws-deadline" required />
             </div>
 
