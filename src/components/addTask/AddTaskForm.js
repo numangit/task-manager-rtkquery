@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useGetProjectsQuery } from '../../features/project/projectApi';
+import { useAddTaskMutation } from '../../features/task/taskApi';
 import { useGetTeamMemberQuery } from '../../features/teamMember/teamMemberApi';
 
 const AddTaskForm = () => {
 
     const { data: members } = useGetTeamMemberQuery();
     const { data: projects } = useGetProjectsQuery();
+    const [addTask] = useAddTaskMutation();
 
     //form state
     const [taskName, setTaskName] = useState('');
@@ -13,10 +16,18 @@ const AddTaskForm = () => {
     const [project, setProject] = useState({});
     const [deadline, setDeadline] = useState('');
 
+    const navigate = useNavigate();
+
     //function to handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({ taskName, teamMember, project, deadline });
+        addTask({
+            taskName,
+            teamMember: JSON.parse(teamMember),
+            project: JSON.parse(project),
+            deadline
+        });
+        navigate('/');
     };
 
     return (
@@ -41,7 +52,7 @@ const AddTaskForm = () => {
                     id="lws-teamMember"
                     required
                     value={teamMember}
-                    onChange={(e) => setTeamMember(JSON.parse(e.target.value))}>
+                    onChange={(e) => setTeamMember(e.target.value)}>
                     <option value="" hidden defaultValue>Select Member</option>
                     {
                         members?.map(member => <option
@@ -65,7 +76,7 @@ const AddTaskForm = () => {
                     {
                         projects?.map(project => <option
                             key={project.id}
-                            value={project.projectName}>
+                            value={JSON.stringify(project)}>
                             {project.projectName}
                         </option>)
                     }
