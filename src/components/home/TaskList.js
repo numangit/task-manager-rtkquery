@@ -1,8 +1,12 @@
 import React from 'react';
+import TaskListItem from './TaskListItem';
 
 const TaskList = () => {
     return (
         <div class="lws-task-list">
+
+            <TaskListItem />
+
             <div class="lws-task">
                 <div class="flex items-center gap-2 text-slate">
                     <h2 class="lws-date">26</h2>
@@ -16,7 +20,7 @@ const TaskList = () => {
 
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-2">
-                        <img src="./images/avatars/ferdous.png" class="team-avater" />
+                        <img src="./images/avatars/ferdous.png" class="team-avater" alt="" />
                         <p class="lws-task-assignedOn">Ferdous Hassan</p>
                     </div>
                     {/* <!-- delete button will not shown to the ui, until the status of the task will be completed --> */}
@@ -63,7 +67,7 @@ const TaskList = () => {
 
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-2">
-                        <img src="./images/avatars/salahuddin.png" class="team-avater" />
+                        <img src="./images/avatars/salahuddin.png" class="team-avater" alt="" />
                         <p class="lws-task-assignedOn">Md Salahuddin</p>
                     </div>
                     <button class="lws-delete">
@@ -111,7 +115,7 @@ const TaskList = () => {
 
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-2">
-                        <img src="./images/avatars/sumit.png" class="team-avater" />
+                        <img src="./images/avatars/sumit.png" class="team-avater" alt="" />
                         <p class="lws-task-assignedOn">Sumit Saha</p>
                     </div>
                     <button class="lws-delete">
@@ -149,7 +153,7 @@ const TaskList = () => {
 
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-2">
-                        <img src="./images/avatars/ferdous.png" class="team-avater" />
+                        <img src="./images/avatars/ferdous.png" class="team-avater" alt="" />
                         <p class="lws-task-assignedOn">Ferdous Hassan</p>
                     </div>
                     <button class="lws-delete">
@@ -187,7 +191,7 @@ const TaskList = () => {
 
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-2">
-                        <img src="./images/avatars/sadh.png" class="team-avater" />
+                        <img src="./images/avatars/sadh.png" class="team-avater" alt="" />
                         <p class="lws-task-assignedOn">Sadh Hassan</p>
                     </div>
                     <button class="lws-delete">
@@ -225,7 +229,7 @@ const TaskList = () => {
 
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-2">
-                        <img src="./images/avatars/akash.png" class="team-avater" />
+                        <img src="./images/avatars/akash.png" class="team-avater" alt="" />
                         <p class="lws-task-assignedOn">Akash Ahmed</p>
                     </div>
                     <button class="lws-delete">
