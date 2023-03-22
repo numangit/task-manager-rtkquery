@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const ProjectListItem = ({ project }) => {
-    const [isChecked, setIsChecked] = useState();
+    const [isChecked, setIsChecked] = useState(true);
     const { colorClass, projectName } = project;
 
     return (
@@ -10,7 +10,7 @@ const ProjectListItem = ({ project }) => {
                 type="checkbox"
                 className={colorClass}
                 checked={isChecked}
-                onChange={(e) => setIsChecked(e.target.value)} />
+                onChange={(e) => setIsChecked(e.target.checked)} />
             <p className="label">{projectName}</p>
         </div>
     );
