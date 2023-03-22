@@ -5,7 +5,6 @@ import { useEditTaskMutation } from '../../features/task/taskApi';
 import { useGetTeamMemberQuery } from '../../features/teamMember/teamMemberApi';
 
 const EditTaskForm = ({ task }) => {
-    console.log(task);
 
     const navigate = useNavigate();
 
@@ -15,7 +14,7 @@ const EditTaskForm = ({ task }) => {
 
     //form state
     const [taskName, setTaskName] = useState(task.taskName);
-    const [teamMember, setTeamMember] = useState(task.teamMember);
+    const [teamMember, setTeamMember] = useState(task.teamMember.name);
     const [project, setProject] = useState(task.project);
     const [deadline, setDeadline] = useState(task.deadline);
 
@@ -29,8 +28,9 @@ const EditTaskForm = ({ task }) => {
             project: JSON.parse(project),
             deadline
         };
-        editTask({ id, data });
-        navigate('/');
+        console.log(data);
+        // editTask({ id, data });
+        // navigate('/');
     };
 
     return (
@@ -56,7 +56,7 @@ const EditTaskForm = ({ task }) => {
                     required
                     value={teamMember}
                     onChange={(e) => setTeamMember(e.target.value)}>
-                    <option value="" hidden defaultValue>Select Member</option>
+                    {/* <option value="" hidden defaultValue>Select Member</option> */}
                     {
                         members?.map(member => <option
                             key={member.id}
@@ -75,7 +75,7 @@ const EditTaskForm = ({ task }) => {
                     value={project}
                     onChange={(e) => setProject(e.target.value)}
                 >
-                    <option value="" hidden defaultValue>Select Project</option>
+                    {/* <option value="" hidden defaultValue>Select Project</option> */}
                     {
                         projects?.map(project => <option
                             key={project.id}
