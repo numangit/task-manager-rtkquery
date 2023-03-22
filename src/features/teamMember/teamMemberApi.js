@@ -7,3 +7,5 @@ export const teamMemberApi = apiSlice.injectEndpoints({
         })
     })
 });
+
+export const { useGetTeamMemberQuery } = teamMemberApi;
