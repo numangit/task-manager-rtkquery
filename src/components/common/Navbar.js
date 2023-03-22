@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <nav className="container relative py-3">
             <div className="flex items-center justify-between">
-                <a href="./index.html">
+                <Link to="/">
                     <img src="./images/logo.svg" alt="LWS Logo" />
-                </a>
+                </Link>
                 {/* <!-- There are nothing to do with the search in add or edit task page, but kept for looking good --> */}
                 <div className="flex-1 max-w-xs search-field group">
                     <i

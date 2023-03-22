@@ -4,19 +4,19 @@ import { useGetTeamMemberQuery } from '../../features/teamMember/teamMemberApi';
 
 const AddTaskForm = () => {
 
-    const { data: teamMember } = useGetTeamMemberQuery();
+    const { data: members } = useGetTeamMemberQuery();
     const { data: projects } = useGetProjectsQuery();
 
     //form state
     const [taskName, setTaskName] = useState('');
-    const [member, setMember] = useState('');
-    const [project, setProject] = useState('');
+    const [teamMember, setTeamMember] = useState({});
+    const [project, setProject] = useState({});
     const [deadline, setDeadline] = useState('');
 
     //function to handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({ taskName, member, project, deadline });
+        console.log({ taskName, teamMember, project, deadline });
     };
 
     return (
@@ -40,13 +40,13 @@ const AddTaskForm = () => {
                     name="teamMember"
                     id="lws-teamMember"
                     required
-                    value={member}
-                    onChange={(e) => setMember(e.target.value)}>
-                    <option value="" hidden defaultValue>Select Job</option>
+                    value={teamMember}
+                    onChange={(e) => setTeamMember(JSON.parse(e.target.value))}>
+                    <option value="" hidden defaultValue>Select Member</option>
                     {
-                        teamMember?.map(member => <option
+                        members?.map(member => <option
                             key={member.id}
-                            value={member}>
+                            value={JSON.stringify(member)}>
                             {member.name}
                         </option>)
                     }
