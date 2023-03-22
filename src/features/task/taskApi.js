@@ -1,6 +1,6 @@
 import { apiSlice } from "../api/apiSlice";
 
-const taskApi = apiSlice.injectEndpoints({
+export const taskApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getTasks: builder.query({
             query: () => ({ url: "/tasks" })
@@ -9,7 +9,17 @@ const taskApi = apiSlice.injectEndpoints({
             query: (id) => ({ url: `/tasks/${id}` })
         }),
         addTask: builder.mutation({
-            query: (data) => ({ url: "/tasks", method: 'POST', body: data })
+            query: (data) => ({ url: "/tasks", method: 'POST', body: data }),
+            async onQueryStarted({ data }, { dispatch, queryFulfilled }) {
+                try {
+                    const { data: addedTask } = await queryFulfilled
+                    dispatch(
+                        apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
+                            draft.push(addedTask);
+                        })
+                    )
+                } catch { }
+            },
         }),
         editTask: builder.mutation({
             query: ({ id, data }) => ({ url: `/tasks/${id}`, method: 'PATCH', body: data })

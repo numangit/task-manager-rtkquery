@@ -153,19 +153,34 @@
       "status": "completed"
     },
     {
-      "taskName": "Codding",
+      "taskName": "TTASKKKS",
       "teamMember": {
-        "name": "Riyadh Hassan",
-        "avatar": "/images/avatars/riyadh.png",
-        "id": 5
+        "name": "Akash Ahmed",
+        "avatar": "/images/avatars/akash.png",
+        "id": 3
       },
       "project": {
-        "id": 6,
-        "projectName": "Job Finder",
-        "colorClass": "color-jobFinder"
+        "id": 5,
+        "projectName": "Blog Application",
+        "colorClass": "color-blog"
+      },
+      "deadline": "2023-03-31",
+      "id": 6
+    },
+    {
+      "taskName": "Reading",
+      "teamMember": {
+        "name": "Sumit Saha",
+        "avatar": "/images/avatars/sumit.png",
+        "id": 1
+      },
+      "project": {
+        "id": 4,
+        "projectName": "Book Store",
+        "colorClass": "color-bookstore"
       },
       "deadline": "2023-03-30",
-      "id": 6
+      "id": 7
     }
   ]
 }

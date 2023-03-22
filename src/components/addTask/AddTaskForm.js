@@ -6,6 +6,8 @@ import { useGetTeamMemberQuery } from '../../features/teamMember/teamMemberApi';
 
 const AddTaskForm = () => {
 
+    const navigate = useNavigate();
+
     const { data: members } = useGetTeamMemberQuery();
     const { data: projects } = useGetProjectsQuery();
     const [addTask] = useAddTaskMutation();
@@ -15,8 +17,6 @@ const AddTaskForm = () => {
     const [teamMember, setTeamMember] = useState({});
     const [project, setProject] = useState({});
     const [deadline, setDeadline] = useState('');
-
-    const navigate = useNavigate();
 
     //function to handle submit
     const handleSubmit = (e) => {
