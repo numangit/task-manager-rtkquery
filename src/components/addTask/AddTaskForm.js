@@ -2,8 +2,8 @@ import React from 'react';
 
 const AddTaskForm = () => {
     return (
-        <form class="space-y-6">
-            <div class="fieldContainer">
+        <form className="space-y-6">
+            <div className="fieldContainer">
                 <label for="lws-taskName">Task Name</label>
                 <input
                     type="text"
@@ -14,7 +14,7 @@ const AddTaskForm = () => {
                 />
             </div>
 
-            <div class="fieldContainer">
+            <div className="fieldContainer">
                 <label>Assign To</label>
                 <select name="teamMember" id="lws-teamMember" required>
                     <option value="" hidden selected>Select Job</option>
@@ -27,7 +27,7 @@ const AddTaskForm = () => {
                     <option>Arif Almas</option>
                 </select>
             </div>
-            <div class="fieldContainer">
+            <div className="fieldContainer">
                 <label for="lws-projectName">Project Name</label>
                 <select id="lws-projectName" name="projectName" required>
                     <option value="" hidden selected>Select Project</option>
@@ -40,13 +40,13 @@ const AddTaskForm = () => {
                 </select>
             </div>
 
-            <div class="fieldContainer">
+            <div className="fieldContainer">
                 <label for="lws-deadline">Deadline</label>
                 <input type="date" name="deadline" id="lws-deadline" required />
             </div>
 
-            <div class="text-right">
-                <button type="submit" class="lws-submit">Save</button>
+            <div className="text-right">
+                <button type="submit" className="lws-submit">Save</button>
             </div>
         </form>
     );

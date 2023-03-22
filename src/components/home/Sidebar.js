@@ -4,7 +4,7 @@ import TeamMembers from './TeamMembers';
 
 const Sidebar = () => {
     return (
-        <div class="sidebar">
+        <div className="sidebar">
 
             <ProjectList />
 
