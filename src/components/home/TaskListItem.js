@@ -1,10 +1,18 @@
 import React from 'react';
+import { useDeleteTaskMutation } from '../../features/task/taskApi';
 
 const TaskListItem = ({ task }) => {
 
-    const { deadline, project, status, taskName, teamMember } = task;
+    const [deleteTask] = useDeleteTaskMutation();
+
+    const { id, deadline, project, status, taskName, teamMember } = task;
     const date = deadline.split('-');
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    //function to handle delete
+    const deleteHandler = (taskId) => {
+        deleteTask(taskId);
+    };
 
     return (
         <div className="lws-task">
@@ -28,7 +36,7 @@ const TaskListItem = ({ task }) => {
 
                 {
                     status === "completed"
-                        ? <button className="lws-delete">
+                        ? <button onClick={(e) => deleteHandler(id)} className="lws-delete">
                             <svg
                                 fill="none"
                                 viewBox="0 0 24 24"
