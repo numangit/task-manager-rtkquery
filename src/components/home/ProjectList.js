@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGetProjectsQuery } from '../../features/project/projectApi';
+import ProjectListItem from './ProjectListItem';
 
 const ProjectList = () => {
 
@@ -11,10 +12,7 @@ const ProjectList = () => {
     if (!isLoading && isError) content = <div className="text-center"> {error?.message}</div>;
     if (!isLoading && !isError && projects?.length === 0) content = <div className="text-center">No Projects found!</div>;
     if (!isLoading && !isError && projects?.length > 0) {
-        content = projects.map(project => <div className="checkbox-container">
-            <input type="checkbox" className={project.colorClass} checked />
-            <p className="label">{project.projectName}</p>
-        </div>)
+        content = projects.map(project => <ProjectListItem key={project.id} project={project} />)
     }
 
     return (
