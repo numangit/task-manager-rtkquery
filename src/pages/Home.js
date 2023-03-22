@@ -1,8 +1,11 @@
 import React from 'react';
+import Sidebar from '../components/home/Sidebar';
 
 const Home = () => {
     return (
         <div class="container relative">
+
+            <Sidebar />
 
             <div class="lg:pl-[16rem] 2xl:pl-[23rem]">
                 <main class="relative z-20 max-w-3xl mx-auto rounded-lg xl:max-w-none">
