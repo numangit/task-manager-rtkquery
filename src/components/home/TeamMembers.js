@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGetTeamMemberQuery } from '../../features/teamMember/teamMemberApi';
+import TeamMember from './TeamMember';
 
 const TeamMembers = () => {
 
@@ -11,10 +12,7 @@ const TeamMembers = () => {
     if (!isLoading && isError) content = <div className="text-center"> {error?.message}</div>;
     if (!isLoading && !isError && teamMembers?.length === 0) content = <div className="text-center">No members found!</div>;
     if (!isLoading && !isError && teamMembers?.length > 0) {
-        content = teamMembers.map(member => <div className="checkbox-container">
-            <img src={member.avatar} className="team-avater" alt="" />
-            <p className="label">{member.name}</p>
-        </div>)
+        content = teamMembers.map(member => <TeamMember key={member.id} member={member} />)
     }
 
     return (
