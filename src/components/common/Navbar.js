@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useMatch, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.svg';
+import { setSearch } from '../../features/filter/filterSlice';
 
 const Navbar = () => {
 
     const isHome = useMatch('/');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [selectSearch, setSelectSearch] = useState("");
 
@@ -13,6 +16,7 @@ const Navbar = () => {
     const handleSearch = (e) => {
         if (e.key === "Enter") {
             console.log(selectSearch);
+            dispatch(setSearch(selectSearch));
             !isHome && navigate('/');
         }
     };
