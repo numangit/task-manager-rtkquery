@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     searchKeyword: "",
-    selectedProject: []
+    selectedProject: ["Scoreboard", "Flight Booking", "Blog Application", "Product Cart", "Book Store", "Job Finder"]
 };
 
 export const filterSlice = createSlice({
@@ -17,9 +17,9 @@ export const filterSlice = createSlice({
             state.selectedProject.forEach(project => {
                 const projectIndex = state.selectedProject.findIndex(project => project === action.payload);
                 if (projectIndex !== -1) {
-                    state.selectedProject.push(action.payload)
-                } else {
                     state.selectedProject.splice(projectIndex, 1)
+                } else {
+                    state.selectedProject.push(action.payload)
                 };
             })
         }

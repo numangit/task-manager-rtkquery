@@ -19,13 +19,23 @@ const TaskList = () => {
         }
     };
 
+    //function to sort by project
+    const sortByProject = (task) => {
+        const projectIndex = selectedProject.indexOf(task.project.projectName);
+        if (projectIndex > -1) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     let content = null;
 
     if (isLoading) content = <div className="text-center">Loading..</div>;
     if (!isLoading && isError) content = <div className="text-center"> {error?.message}</div>;
     if (!isLoading && !isError && tasks?.length === 0) content = <div className="text-center">No tasks found!</div>;
     if (!isLoading && !isError && tasks?.length > 0) {
-        content = tasks.filter(filterBySearch).map(task => <TaskListItem key={task.id} task={task} />)
+        content = tasks.filter(filterBySearch).filter(sortByProject).map(task => <TaskListItem key={task.id} task={task} />)
     }
 
     return (

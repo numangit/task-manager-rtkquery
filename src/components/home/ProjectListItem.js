@@ -9,9 +9,8 @@ const ProjectListItem = ({ project }) => {
     const { colorClass, projectName } = project;
 
     //handle project selection
-    const handleProject = (e) => {
-        if (e.target.checked) dispatch(setProject(projectName));
-        // if (e.target.checked) console.log(projectName);
+    const handleProject = () => {
+        dispatch(setProject(projectName));
     };
 
     return (
