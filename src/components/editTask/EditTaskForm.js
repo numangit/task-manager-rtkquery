@@ -14,7 +14,7 @@ const EditTaskForm = ({ task }) => {
 
     //form state
     const [taskName, setTaskName] = useState(task.taskName);
-    const [teamMember, setTeamMember] = useState(JSON.stringify(task.teamMember.name));
+    const [teamMember, setTeamMember] = useState(JSON.stringify(task.teamMember));
     const [project, setProject] = useState(JSON.stringify(task.project));
     const [deadline, setDeadline] = useState(task.deadline);
 
@@ -28,9 +28,8 @@ const EditTaskForm = ({ task }) => {
             project: JSON.parse(project),
             deadline
         };
-        console.log(data);
-        // editTask({ id, data });
-        // navigate('/');
+        editTask({ id, data });
+        navigate('/');
     };
 
     return (
@@ -56,12 +55,12 @@ const EditTaskForm = ({ task }) => {
                     required
                     value={teamMember}
                     onChange={(e) => setTeamMember(e.target.value)}>
-                    {/* <option value="" hidden defaultValue>Select Member</option> */}
+                    <option value="" hidden defaultValue>Select Member</option>
                     {
                         members?.map(member => <option
-                            key={member.id}
+                            key={member?.id}
                             value={JSON.stringify(member)}>
-                            {member.name}
+                            {member?.name}
                         </option>)
                     }
                 </select>
@@ -75,12 +74,12 @@ const EditTaskForm = ({ task }) => {
                     value={project}
                     onChange={(e) => setProject(e.target.value)}
                 >
-                    {/* <option value="" hidden defaultValue>Select Project</option> */}
+                    <option value="" hidden defaultValue>Select Project</option>
                     {
                         projects?.map(project => <option
-                            key={project.id}
+                            key={project?.id}
                             value={JSON.stringify(project)}>
-                            {project.projectName}
+                            {project?.projectName}
                         </option>)
                     }
                 </select>

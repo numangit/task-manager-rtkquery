@@ -30,10 +30,7 @@ export const taskApi = apiSlice.injectEndpoints({
                 const patchResult = dispatch(
                     apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
                         const deleteTask = draft.findIndex(task => task.id === id);
-                        // draft.filter(task => console.log(task));
                         draft.splice(deleteTask, 1);
-                        // console.log(JSON.stringify(draft));
-                        // console.log(id);
                     })
                 )
                 try {
