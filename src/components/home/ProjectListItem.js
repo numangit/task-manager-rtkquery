@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 
 const ProjectListItem = ({ project }) => {
+
     const [isChecked, setIsChecked] = useState(true);
     const { colorClass, projectName } = project;
+
+    //handle project selection
+    const handleProject = () => {
+        console.log(isChecked);
+    };
 
     return (
         <div className="checkbox-container">

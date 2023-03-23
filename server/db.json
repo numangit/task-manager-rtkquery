@@ -151,22 +151,6 @@
       },
       "id": 5,
       "status": "completed"
-    },
-    {
-      "taskName": "TTASKKKS",
-      "teamMember": {
-        "name": "Riyadh Hassan",
-        "avatar": "/images/avatars/riyadh.png",
-        "id": 5
-      },
-      "project": {
-        "id": 2,
-        "projectName": "Flight Booking",
-        "colorClass": "color-flight"
-      },
-      "deadline": "2023-04-09",
-      "id": 6,
-      "status": "completed"
     }
   ]
 }
