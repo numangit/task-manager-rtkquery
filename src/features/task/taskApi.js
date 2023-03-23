@@ -2,14 +2,25 @@ import { apiSlice } from "../api/apiSlice";
 
 export const taskApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
+
         getTasks: builder.query({
-            query: () => ({ url: "/tasks" })
+            query: () => ({
+                url: "/tasks"
+            })
         }),
+
         getTask: builder.query({
-            query: (id) => ({ url: `/tasks/${id}` })
+            query: (id) => ({
+                url: `/tasks/${id}`
+            })
         }),
+
         addTask: builder.mutation({
-            query: (data) => ({ url: "/tasks", method: 'POST', body: data }),
+            query: (data) => ({
+                url: "/tasks",
+                method: 'POST',
+                body: data
+            }),
             async onQueryStarted({ data }, { dispatch, queryFulfilled }) {
                 try {
                     const { data: addedTask } = await queryFulfilled
@@ -21,29 +32,37 @@ export const taskApi = apiSlice.injectEndpoints({
                 } catch { }
             },
         }),
-        editTask: builder.mutation({
-            query: ({ id, data }) => ({ url: `/tasks/${id}`, method: 'PATCH', body: data }),
-            async onQueryStarted({ id, data }, { dispatch, queryFulfilled }) {
-                try {
-                    const { data: updatedTask } = await queryFulfilled
-                    dispatch(
-                        apiSlice.util.updateQueryData('getTask', id, (draft) => {
-                            console.log("hhh", JSON.stringify(draft));
-                            draft?.map(task => {
-                                console.log(JSON.stringify(draft));
-                                if (task.id == id) {
-                                    return task = updatedTask;
-                                }
-                                return task
 
-                            })
+        editTask: builder.mutation({
+            query: ({ id, data }) => ({
+                url: `/tasks/${id}`,
+                method: 'PATCH',
+                body: data
+            }),
+            async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
+                try {
+                    const { data: updatedTask } = await queryFulfilled;
+
+                    dispatch(
+                        apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
+
+                            const TargetedTask = draft?.find(task => task?.id === id);
+
+                            TargetedTask.taskName = updatedTask.taskName;
+                            TargetedTask.teamMember = updatedTask.teamMember;
+                            TargetedTask.project = updatedTask.project;
+                            TargetedTask.deadline = updatedTask.deadline;
                         })
                     )
                 } catch { }
             },
         }),
+
         deleteTask: builder.mutation({
-            query: (id) => ({ url: `/tasks/${id}`, method: 'DELETE' }),
+            query: (id) => ({
+                url: `/tasks/${id}`,
+                method: 'DELETE'
+            }),
             async onQueryStarted(id, { dispatch, queryFulfilled }) {
                 const patchResult = dispatch(
                     apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {

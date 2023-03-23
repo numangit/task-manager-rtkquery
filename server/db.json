@@ -88,16 +88,16 @@
     {
       "taskName": "Task Two",
       "teamMember": {
-        "name": "Akash Ahmed",
-        "avatar": "/images/avatars/akash.png",
-        "id": 3
+        "name": "Sumit Saha",
+        "avatar": "/images/avatars/sumit.png",
+        "id": 1
       },
       "project": {
-        "id": 2,
-        "projectName": "Flight Booking",
-        "colorClass": "color-flight"
+        "id": 5,
+        "projectName": "Blog Application",
+        "colorClass": "color-blog"
       },
-      "deadline": "2023-03-23",
+      "deadline": "2023-03-03",
       "id": 2,
       "projectName": "Scoreboard",
       "status": "pending"
