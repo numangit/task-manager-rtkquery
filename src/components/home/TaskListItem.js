@@ -23,7 +23,6 @@ const TaskListItem = ({ task }) => {
         const { id } = task;
         const data = { status: e.target.value }
         setStatusInput(e.target.value)
-        // console.log({ id, data });
         editTask({ id, data });
     };
 

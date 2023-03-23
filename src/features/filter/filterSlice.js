@@ -12,16 +12,13 @@ export const filterSlice = createSlice({
         setSearch: (state, action) => {
             state.searchKeyword = action.payload
         },
-
         setProject: (state, action) => {
-            state.selectedProject.forEach(project => {
-                const projectIndex = state.selectedProject.findIndex(project => project === action.payload);
-                if (projectIndex !== -1) {
-                    state.selectedProject.splice(projectIndex, 1)
-                } else {
-                    state.selectedProject.push(action.payload)
-                };
-            })
+            const projectIndex = state.selectedProject.indexOf(action.payload);
+            if (projectIndex !== -1) {
+                state.selectedProject.splice(projectIndex, 1)
+            } else {
+                state.selectedProject.push(action.payload)
+            };
         }
     }
 });

@@ -22,7 +22,7 @@ const TaskList = () => {
     //function to sort by project
     const sortByProject = (task) => {
         const projectIndex = selectedProject.indexOf(task.project.projectName);
-        if (projectIndex > -1) {
+        if (projectIndex !== -1) {
             return true;
         } else {
             return false;

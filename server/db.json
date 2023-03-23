@@ -121,14 +121,14 @@
     {
       "taskName": "New Task",
       "teamMember": {
-        "name": "Sumit Saha",
-        "avatar": "/images/avatars/sumit.png",
-        "id": 1
+        "name": "Akash Ahmed",
+        "avatar": "/images/avatars/akash.png",
+        "id": 3
       },
       "project": {
-        "id": 1,
-        "projectName": "Scoreboard",
-        "colorClass": "color-scoreboard"
+        "id": 2,
+        "projectName": "Flight Booking",
+        "colorClass": "color-flight"
       },
       "deadline": "2023-03-11",
       "projectName": "Scoreboard",
@@ -150,7 +150,22 @@
         "colorClass": "color-bookstore"
       },
       "id": 5,
-      "status": "completed"
+      "status": "inProgress"
+    },
+    {
+      "taskName": "Codding",
+      "teamMember": {
+        "name": "Riyadh Hassan",
+        "avatar": "/images/avatars/riyadh.png",
+        "id": 5
+      },
+      "project": {
+        "id": 6,
+        "projectName": "Job Finder",
+        "colorClass": "color-jobFinder"
+      },
+      "deadline": "2023-03-08",
+      "id": 6
     }
   ]
 }
