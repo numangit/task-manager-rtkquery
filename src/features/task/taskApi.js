@@ -3,6 +3,8 @@ import { apiSlice } from "../api/apiSlice";
 export const taskApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
 
+        // http://localhost:9000/tasks?project.projectName=Scoreboard&project.projectName=Book%20Store&taskName_like=
+
         getTasks: builder.query({
             query: () => ({
                 url: "/tasks"
@@ -12,12 +14,6 @@ export const taskApi = apiSlice.injectEndpoints({
         getTask: builder.query({
             query: (id) => ({
                 url: `/tasks/${id}`
-            })
-        }),
-
-        getTaskBySearch: builder.query({
-            query: (keyword) => ({
-                url: `/tasks/?taskName_like=${keyword}`
             })
         }),
 
@@ -48,7 +44,6 @@ export const taskApi = apiSlice.injectEndpoints({
             async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
                 try {
                     const { data: updatedTask } = await queryFulfilled;
-
                     dispatch(
                         apiSlice.util.updateQueryData('getTasks', undefined, (draft) => {
 
@@ -89,7 +84,6 @@ export const taskApi = apiSlice.injectEndpoints({
 export const {
     useGetTasksQuery,
     useGetTaskQuery,
-    useGetTaskBySearchQuery,
     useAddTaskMutation,
     useEditTaskMutation,
     useDeleteTaskMutation
