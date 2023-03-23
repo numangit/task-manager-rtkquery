@@ -14,8 +14,8 @@ const EditTaskForm = ({ task }) => {
 
     //form state
     const [taskName, setTaskName] = useState(task.taskName);
-    const [teamMember, setTeamMember] = useState(task.teamMember.name);
-    const [project, setProject] = useState(task.project);
+    const [teamMember, setTeamMember] = useState(JSON.stringify(task.teamMember.name));
+    const [project, setProject] = useState(JSON.stringify(task.project));
     const [deadline, setDeadline] = useState(task.deadline);
 
     //function to handle submit
