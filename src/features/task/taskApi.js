@@ -15,6 +15,12 @@ export const taskApi = apiSlice.injectEndpoints({
             })
         }),
 
+        getTaskBySearch: builder.query({
+            query: (keyword) => ({
+                url: `/tasks/?taskName_like=${keyword}`
+            })
+        }),
+
         addTask: builder.mutation({
             query: (data) => ({
                 url: "/tasks",
@@ -83,6 +89,7 @@ export const taskApi = apiSlice.injectEndpoints({
 export const {
     useGetTasksQuery,
     useGetTaskQuery,
+    useGetTaskBySearchQuery,
     useAddTaskMutation,
     useEditTaskMutation,
     useDeleteTaskMutation
