@@ -52,6 +52,7 @@ export const taskApi = apiSlice.injectEndpoints({
                             TargetedTask.teamMember = updatedTask.teamMember;
                             TargetedTask.project = updatedTask.project;
                             TargetedTask.deadline = updatedTask.deadline;
+                            TargetedTask.status = updatedTask.status;
                         })
                     )
                 } catch { }

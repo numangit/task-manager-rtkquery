@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDeleteTaskMutation } from '../../features/task/taskApi';
+import { useDeleteTaskMutation, useEditTaskMutation } from '../../features/task/taskApi';
 
 const TaskListItem = ({ task }) => {
 
     const [deleteTask] = useDeleteTaskMutation();
+    const [editTask] = useEditTaskMutation();
 
     const { id, deadline, project, status, taskName, teamMember } = task;
+    const [statusInput, setStatusInput] = useState(status);
+
     const date = deadline.split('-');
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     //function to handle delete
     const deleteHandler = (taskId) => {
         deleteTask(taskId);
+    };
+
+    //function to handle status
+    const handleStatus = (e) => {
+        const { id } = task;
+        const data = { status: e.target.value }
+        setStatusInput(e.target.value)
+        // console.log({ id, data });
+        editTask({ id, data });
     };
 
     return (
@@ -63,10 +75,13 @@ const TaskListItem = ({ task }) => {
                         </Link>
                 }
 
-                <select className="lws-status">
-                    <option value="pending" selected={status === "pending" && true}>Pending</option>
-                    <option value="inProgress" selected={status === "inProgress" && true}>In Progress</option>
-                    <option value="complete" selected={status === "completed" && true}>Completed</option>
+                <select
+                    className="lws-status"
+                    value={statusInput}
+                    onChange={handleStatus}>
+                    <option value="pending">Pending</option>
+                    <option value="inProgress">In Progress</option>
+                    <option value="completed">Completed</option>
                 </select>
             </div>
         </div>
