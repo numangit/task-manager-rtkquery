@@ -15,7 +15,6 @@ const Navbar = () => {
     //function to handle search
     const handleSearch = (e) => {
         if (e.key === "Enter") {
-            console.log(selectSearch);
             dispatch(setSearch(selectSearch));
             !isHome && navigate('/');
         }
