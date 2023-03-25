@@ -55,7 +55,12 @@ export const taskApi = apiSlice.injectEndpoints({
                             TargetedTask.deadline = updatedTask.deadline;
                             TargetedTask.status = updatedTask.status;
                         })
-                    )
+                    );
+                    dispatch(
+                        apiSlice.util.updateQueryData('getTask', id.toString(), (draft) => {
+                            return { ...draft, ...updatedTask } //why does'nt work without return?
+                        })
+                    );
                 } catch { }
             },
         }),
